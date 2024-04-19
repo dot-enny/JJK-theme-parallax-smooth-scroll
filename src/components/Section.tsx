@@ -16,7 +16,7 @@ export const Section = (
 
   return (
     <section ref={sectionRef} className="relative h-screen overflow-hidden">
-      <motion.div className="absolute w-full h-[120%] -z-10" style={{ top:  y }}>
+      <motion.div className="absolute w-full h-[105%] -z-10" style={{ top:  y }}>
         <div className="absolute inset-0 bg-black/60 z-10" />
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </motion.div>
