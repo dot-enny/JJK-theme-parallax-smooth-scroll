@@ -24,10 +24,10 @@ export const NavMenuItem = ({ index, title }: NavMenuItemProps) => {
         >
             <div className="flex items-center relative w-full">
                 <motion.div className="absolute inset-0 bg-[#eee9e4]" variants={itemCoverMotion} />
-                <motion.span className="w-[4ch] test-2xl sm:text-3xl md:text-4xl" variants={itemContentMotion}>
+                <motion.span className="w-[4ch] text-xl md:text-2xl" variants={itemContentMotion}>
                     {index.toLocaleString("en-US", { minimumIntegerDigits: 2 })}
                 </motion.span>
-                <a href="#" className="uppercase tracking-wide text-4xl sm:text 5xl md:text-6xl flex-1">{title}</a>
+                <a href="#" className="uppercase tracking-wide text-3xl md:text-4xl flex-1">{title}</a>
                 <motion.div variants={arrowMotion}>
                     <img src={ArrowDownRight} alt=" " className="w-6 h-6" />
                 </motion.div>
