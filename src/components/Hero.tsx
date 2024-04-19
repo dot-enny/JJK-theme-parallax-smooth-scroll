@@ -1,12 +1,18 @@
+import { useState } from "react";
 import { HighlightItem } from "./HighlightItem"
-import { Navbar } from "./Navbar"
+import { Navbar } from "./nav/Navbar"
+import { NavMenu } from "./nav/NavMenu";
+import { AnimatePresence } from "framer-motion";
 
 export const Hero = () => {
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <section className="h-screen relative flex flex-col justify-center">
         {/* Navbar */}
-        <Navbar />
+        <AnimatePresence>{isMenuOpen && <NavMenu />}</AnimatePresence>
+        <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         {/* Background Video */}
         <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-black/60 z-10" />
