@@ -1,9 +1,9 @@
 import { Hero } from "./components/Hero";
 import { Section } from "./components/Section";
-import Gojo from "/jjk-gojo.jpg";
-import Megumi from "/jjk-megumi.jpg";
-import Yuji from "/jjk-yuji.jpg";
-import Nobara from "/jjk-nobara.jpg";
+import Gojo from "/img/jjk-gojo.jpg";
+import Megumi from "/img/jjk-megumi.jpg";
+import Yuji from "/img/jjk-yuji.jpg";
+import Nobara from "/img/jjk-nobara.jpg";
 import { useEffect } from "react";
 import Lenis from '@studio-freight/lenis'
 
