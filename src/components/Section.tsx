@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react"
 
@@ -11,8 +11,23 @@ export const Section = (
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"])
+
+  const list = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+  const item = {
+    hidden: { x: -10, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 1 } },
+  };
+
+  const isInView = useInView(sectionRef, {
+    margin: "-100px"
+  });
 
   return (
     <section ref={sectionRef} className="relative h-screen overflow-hidden max-sm:flex max-sm:items-end max-sm:pb-10">
@@ -20,11 +35,16 @@ export const Section = (
         <div className="absolute inset-0 bg-black/60 z-10" />
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </motion.div>
-      <div className="flex flex-col gap-4 max-sm:p-4 p-24">
-        <span className="uppercase text-xs">{tag}</span>
-        <h1 className="font-serif text-4xl max-w-[25ch]">{title}</h1>
-        <p className="max-w-[50ch]">{description}</p>
-      </div>
+      <motion.div 
+        className="flex flex-col gap-4 max-sm:p-4 p-24"
+        variants={list}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        <motion.span className="uppercase text-xs" variants={item}>{tag}</motion.span>
+        <motion.h1 className="font-serif text-4xl max-w-[25ch]" variants={item}>{title}</motion.h1>
+        <motion.p className="max-w-[50ch]" variants={item}>{description}</motion.p>
+      </motion.div>
     </section>
   )
 }
