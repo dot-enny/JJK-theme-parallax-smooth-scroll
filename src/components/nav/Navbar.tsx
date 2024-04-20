@@ -27,7 +27,7 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
     <>
     {/* large to extralarge screens */}
       <nav className="max-lg:hidden absolute inset-x-0 top-0 h-16 flex justify-between items-center px-20 bg-gradient-to-b from-black to-black/0">
-          <span className="font-extrabold text-2xl">Jujutsu Kaisen</span>
+          <span className="font-extrabold text-2xl mix-blend-difference">Jujutsu Kaisen</span>
           <ul className="flex gap-6">
               <li><a href="#">Home</a></li>
               <li><a href="#">Episodes</a></li>
@@ -43,7 +43,6 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
           hidden: { y: "-100%" }
         }}
         animate={ hidden ? "hidden" : "visible" }
-        // transition={{ duration: 0.35, ease: "easeInOut" }}
       >
         <span className="font-extrabold text-2xl">Jujutsu Kaisen</span>
         <NavMenuToggle isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />      
