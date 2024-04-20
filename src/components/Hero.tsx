@@ -1,10 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { HighlightItem } from "./HighlightItem"
 import { Navbar } from "./nav/Navbar"
 import { NavMenu } from "./nav/NavMenu";
+import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { easings } from "../utils/animations";
 
 export const Hero = () => {
+
+    const animeInfo = [
+        { title: "Season 1", content: "24 Episodes" },
+        { title: "Season 2", content: "24 Episodes" },
+        { title: "Genre", content: "Action" },
+        { title: "Genre", content: "Thriller" }
+    ];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -23,21 +32,43 @@ export const Hero = () => {
         {/* Text content */}
         <div className="flex flex-col items-center gap-24 max-xl:mt-10">
             <div className="flex flex-col items-center gap-8">
-                <h1 className="text-6xl max-w-[12ch] text-center font-serif">Jujutsu Kaisen</h1>
-                <p>Defining the future of humans and curses</p>
+                <div className="relative">
+                    <h1 className="text-6xl max-w-[12ch] text-center font-serif">Jujutsu Kaisen</h1>
+                </div>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        opacity: 1,
+                        transition: {
+                        delay: 0.8,
+                        duration: 0.8,
+                        ease: easings.easeOutQuart,
+                        },
+                    }}
+                >
+                    Defining the future of humans and curses
+                </motion.p>
                 <button className="bg-white text-black uppercase px-6 py-2 rounded-md">
                     Watch
                 </button>
             </div>
         </div>
         <div className="grid grid-cols-2 md:flex md:justify-between max-md:gap-y-10 sm:w-3/5 max-w-[900px] sm:mx-auto max-md:mt-10 max-sm:-mb-10 md:mt-20">
-            <HighlightItem title="Season 1" content="24 Episodes" />
-            <div className="w-[2px] h-full bg-white max-md:hidden" />
-            <HighlightItem title="Season 2" content="24 Episodes" />
-            <div className="w-[2px] h-full bg-white max-md:hidden" />
-            <HighlightItem title="Genre" content="Action" />
-            <div className="w-[2px] h-full bg-white max-md:hidden" />
-            <HighlightItem title="Genre" content="Thriller" />
+            {animeInfo.map((item, index) => (
+                <React.Fragment key={index}>
+                    <HighlightItem title={item.title} content={item.content} />
+                    { (index !== animeInfo.length - 1) && 
+                        <motion.div 
+                            className="w-[2px] h-full bg-white max-md:hidden origin-top" 
+                            initial={{ scaleY: 0 }}
+                            animate={{ 
+                                scaleY: 1,
+                                transition: { duration: 0.8, ease: easings.easeInOutQuint, delay: 1 }
+                            }}
+                        /> 
+                    }
+                </React.Fragment>
+            ))}
         </div>
     </section>
   )
