@@ -17,6 +17,26 @@ export const Hero = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const ParagraphVariants = {
+        initial: { opacity: 0 },
+        animate: {
+            opacity: 1,
+            transition: {
+                delay: 1.8,
+                duration: 0.8,
+                ease: easings.easeOutQuart,
+            },
+        }
+    };
+
+    const DividerVariants = {
+        initial: { scaleY: 0 },
+        animate: {
+            scaleY: 1,
+            transition: { duration: 0.8, ease: easings.easeInOutQuint, delay: 2.2 }
+        }
+    };
+
     return (
         <section className="h-screen relative flex flex-col justify-center">
             {/* Navbar & NavMenu */}
@@ -37,17 +57,7 @@ export const Hero = () => {
                     <div className="relative">
                         <h1 className="text-6xl max-w-[12ch] text-center font-serif">Jujutsu Kaisen</h1>
                     </div>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{
-                            opacity: 1,
-                            transition: {
-                                delay: 1.8,
-                                duration: 0.8,
-                                ease: easings.easeOutQuart,
-                            },
-                        }}
-                    >
+                    <motion.p variants={ParagraphVariants} initial="initial" animate="animate">
                         Defining the future of humans and curses
                     </motion.p>
                     <button className="bg-white text-black uppercase px-6 py-2 rounded-md">
@@ -60,14 +70,7 @@ export const Hero = () => {
                     <React.Fragment key={index}>
                         <HighlightItem title={item.title} content={item.content} />
                         {(index !== animeInfo.length - 1) &&
-                            <motion.div
-                                className="w-[2px] h-full bg-white max-md:hidden origin-top"
-                                initial={{ scaleY: 0 }}
-                                animate={{
-                                    scaleY: 1,
-                                    transition: { duration: 0.8, ease: easings.easeInOutQuint, delay: 2.2 }
-                                }}
-                            />
+                            <motion.div className="w-[2px] h-full bg-white max-md:hidden origin-top" variants={DividerVariants} initial="initial" animate="animate" />
                         }
                     </React.Fragment>
                 ))}
