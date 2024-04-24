@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HighlightItem } from "./HighlightItem"
 import { Navbar } from "./nav/Navbar"
 import { NavMenu } from "./nav/NavMenu";
@@ -16,6 +16,14 @@ export const Hero = () => {
     ];
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    useEffect(() => {
+        // hide scroll-bar when menu is open and reset scroll position to top when menu is open
+        // menu can only be opened when scroll position is at the top of the page
+        document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+        window.scrollTo(0, 0);
+    }, [isMenuOpen])
+    
 
     const ParagraphVariants = {
         initial: { opacity: 0 },
