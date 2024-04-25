@@ -1,5 +1,5 @@
-import { Hero } from "./components/Hero";
-import { Section } from "./components/Section";
+import { Hero } from "../components/Hero";
+import { Section } from "../components/Section";
 import Gojo from "/img/jjk-gojo.jpg";
 import Megumi from "/img/jjk-megumi.jpg";
 import Yuji from "/img/jjk-yuji.jpg";
@@ -7,7 +7,7 @@ import Nobara from "/img/jjk-nobara.jpg";
 import { useEffect } from "react";
 import Lenis from '@studio-freight/lenis'
 
-export default function App () {
+export default function Home () {
 
   useEffect(() => {
     const lenis = new Lenis()
