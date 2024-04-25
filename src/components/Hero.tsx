@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HighlightItem } from "./HighlightItem"
-import { Navbar } from "./nav/Navbar"
-import { NavMenu } from "./nav/NavMenu";
 import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
 import { easings } from "../utils/animations";
 
 export const Hero = () => {
@@ -14,16 +11,6 @@ export const Hero = () => {
         { title: "Genre", content: "Action" },
         { title: "Genre", content: "Thriller" }
     ];
-
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    useEffect(() => {
-        // hide scroll-bar when menu is open and reset scroll position to top when menu is open
-        // menu can only be opened when scroll position is at the top of the page
-        document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-        window.scrollTo(0, 0);
-    }, [isMenuOpen])
-    
 
     const ParagraphVariants = {
         initial: { opacity: 0 },
@@ -47,10 +34,6 @@ export const Hero = () => {
 
     return (
         <section className="h-screen relative flex flex-col justify-center">
-            {/* Navbar & NavMenu */}
-            <AnimatePresence>{isMenuOpen && <NavMenu />}</AnimatePresence>
-            <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-
             {/* Background Video */}
             <div className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-black/60 z-10" />

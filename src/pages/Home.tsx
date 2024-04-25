@@ -19,7 +19,7 @@ export default function Home () {
   }, []);
 
   return (
-    <main className="min-h-screen text-white">
+    <div className="min-h-screen">
       <Hero />
       <Section 
         image={Gojo} 
@@ -45,7 +45,7 @@ export default function Home () {
         title="The Exterminator"
         description="Kugisaki Nobara is a student at Tokyo Metropolitan Curse Technical College. She is known for her ability to control nails and is a skilled exorcist."
       />
-    </main>
+    </div>
   )
 };
  
