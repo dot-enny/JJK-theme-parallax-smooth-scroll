@@ -22,8 +22,8 @@ export default function Episode({ episodeId, image }: { episodeId: number, image
     return (
         <>
             {episodeData && (
-                <div>
-                    <div className="p-4 h-[50vh] min-h-screen px-20 py-24 grid grid-cols- gap-12 items-center">
+                <>
+                    <div className="p-4 h-[50vh] min-h-screen sm:px-20 py-24 grid gap-12 items-center">
                         { episodeData.mal_id && <img src={image} alt="episode image" className="justify-self-center" /> }
                         <div className="rounded-lg">
                             <div className="flex justify-between text-lg font-semibold mb-9">
