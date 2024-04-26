@@ -4,7 +4,12 @@ import { easings } from "../../utils/animations";
 
 export const NavMenu = () => {
 
-  const navItems = ["Home", "Episodes", "Characters", "Watch"];
+  const navItems = [
+    { title: "Home", path: "/" }, 
+    { title: "Episodes", path: "/episodes" }, 
+    { title: "Characters", path: "#" }, 
+    { title: "Watch", path: "#" }
+  ];
 
   return (
     <motion.nav
@@ -18,7 +23,7 @@ export const NavMenu = () => {
     >
       <motion.ul exit={{ opacity: 0, transition: { duration: 0 } }}>
         {navItems.map((item, index) => (
-          <NavMenuItem key={index} index={index + 1} title={item} />
+          <NavMenuItem key={index} index={index + 1} title={item.title} path={item.path} />
         ))}
       </motion.ul>
     </motion.nav>

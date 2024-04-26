@@ -30,7 +30,7 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
           <span className="font-extrabold text-2xl mix-blend-difference">Jujutsu Kaisen</span>
           <ul className="flex gap-6 z-10">
               <li><a href="#">Home</a></li>
-              <li><a href="#">Episodes</a></li>
+              <li><a href="/episodes">Episodes</a></li>
               <li><a href="#">Characters</a></li>
               <li><a href="#">Watch</a></li>
           </ul>
