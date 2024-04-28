@@ -6,6 +6,10 @@ export default function Episode({ episodeId, image }: { episodeId: number, image
     const [episodeData, setEpisodeData] = useState<any>(null);
     const [episodeDetails, setEpisodeDetails] = useState<any>(null);
 
+    const toggleEpisodeDetails = () => {
+        setEpisodeDetails(!episodeDetails); // Toggle state on click
+    };
+
     useEffect(() => {
         fetchEpisodeData();
     }, []);
@@ -25,24 +29,19 @@ export default function Episode({ episodeId, image }: { episodeId: number, image
         <>
             {episodeData && (
                 <>
-                    <div className="p-4 h-[50vh] min-h-screen sm:px-20 py-24 grid gap-12 items-center">
-                        {episodeData.mal_id && <img src={image} alt="episode image" className="justify-self-center" />}
-                        <div className="rounded-lg">
-                            <div className="flex justify-between text-lg font-semibold mb-9">
-                                <span>{episodeData.mal_id}</span>
-                                <span>{episodeData.title}</span>
-                            </div>
-                            <p className="">{episodeData.synopsis.slice(0, 300)}...</p>
-                            <span
-                                className="underline text-gray-400 cursor-pointer"
-                                onClick={() => setEpisodeDetails(true)}
-                            >
-                                see details
-                            </span>
+                    <div 
+                        className="m-auto grid cursor-pointer"
+                        onClick={toggleEpisodeDetails}
+                    >
+                        {episodeData.mal_id && <img src={image} alt="episode image" />}
+                        <div className="flex justify-start text-lg font-semibold cursor-pointer mt-5">
+                            <span>{episodeData.mal_id}</span>
+                            <span className="mr-2">.</span>
+                            <span>{episodeData.title.slice(0, 20)}</span>
                         </div>
 
                         {episodeDetails && 
-                            <EpisodeDetails episode={{image, ...episodeData}} toggleDetails={setEpisodeDetails} />}
+                            <EpisodeDetails episode={{image, ...episodeData}} toggleDetails={toggleEpisodeDetails} />}
                     </div>
                 </>
             )}
@@ -57,10 +56,13 @@ interface EpisodeProps {
 
 const EpisodeDetails = ({episode, toggleDetails}: EpisodeProps) => {
     return (
-        <div
-            onClick={() => toggleDetails(false)}
-            className="bg-gradient-to-b from-purple-950 via-purple-900 to-black fixed inset-20 rounded cursor-pointer opacity-95"
-        >
+        <div className="bg-gradient-to-b from-purple-950 via-pink-950 to-black fixed inset-20 rounded cursor-pointer">
+            <div 
+                className="text-3xl absolute top-0 right-0"
+                onClick={() => toggleDetails(false)}
+            >
+                    x
+            </div>
             <div className="w-3/4 mx-auto pt-10">
                 <div className="grid grid-cols-2">
                     <div className="font-semibold">
