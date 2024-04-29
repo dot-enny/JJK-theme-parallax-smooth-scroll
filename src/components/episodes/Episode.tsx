@@ -3,12 +3,13 @@ import { EpisodeDetails } from "./episode-details/EpisodeDetails"
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
-export default function Episode({ episodeId, image } : { episodeId: number, image: string }) {
+export default function Episode({ episodeId, image, setPointerEvents } : { episodeId: number, image: string, setPointerEvents: () => void }) {
     const [episodeData, setEpisodeData] = useState<any>(null);
     const [episodeDetails, setEpisodeDetails] = useState<boolean>(false);
 
    const toggleDetails = () => {
     setEpisodeDetails(!episodeDetails);
+    setPointerEvents();
    };
 
     useEffect(() => {
