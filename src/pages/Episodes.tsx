@@ -40,7 +40,7 @@ export default function Episodes () {
     return (
         <div className={`bg-black ${pointerEvents ? 'pointer-events-none' : 'pointer-events-auto'}`}>
             {animeData && (
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-20 pb-10 px-14 gap-20">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-20 pb-10 px-14 gap-20 bg-black min-h-screen">
                     {animeData.map((episode: any) => (
                         <React.Fragment key={episode.mal_id}>
                             <Episode episodeId={episode.mal_id} image={animeVideos[episode.mal_id]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} />
