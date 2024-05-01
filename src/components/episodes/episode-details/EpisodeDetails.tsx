@@ -7,7 +7,7 @@ interface EpisodeProps {
 
 export const EpisodeDetails = ({episode, toggleDetails}: EpisodeProps) => {
     return (
-        <div className="z-20 opacity-95 bg-gradient-to-b from-purple-950 via-pink-950 to-black fixed inset-0 rounded pointer-events-none">
+        <div className="z-20 bg-gradient-to-b from-purple-950/95 via-pink-950 to-black/95 fixed inset-0 rounded pointer-events-none">
             <HideEpisodeDetails toggleDetails={toggleDetails} />
             <div className="w-3/4 mx-auto pt-10">
                 <div className="grid grid-cols-2">
