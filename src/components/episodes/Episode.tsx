@@ -33,10 +33,10 @@ export default function Episode({ episodeId, image, setPointerEvents } : { episo
                 <>
                     {/* episode card */}
                     <button
-                        className="m-auto"
+                        className="m-auto hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={toggleDetails}
                     >
-                        {episodeData.mal_id && <img src={image} alt="episode image" />}
+                        {episodeData.mal_id && <img src={image} alt="episode image" className="w-[200px] h-[113px]" />}
                         <div className="flex justify-start text-lg font-semibold cursor-pointer mt-5">
                             <span>{episodeData.mal_id}</span>
                             <span className="mr-2">.</span>
