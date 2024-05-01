@@ -1,3 +1,4 @@
+import { DetailItem } from "./DetailItem";
 import { HideEpisodeDetails } from "./HideEpisodeDetails";
 
 interface EpisodeProps {
@@ -5,44 +6,25 @@ interface EpisodeProps {
     toggleDetails: () => void;
 }
 
-export const EpisodeDetails = ({episode, toggleDetails}: EpisodeProps) => {
+export const EpisodeDetails = ({ episode, toggleDetails }: EpisodeProps) => {
     return (
         <div className="z-20 bg-gradient-to-b from-purple-950/95 via-pink-950 to-black/95 fixed inset-0 rounded pointer-events-none">
             <HideEpisodeDetails toggleDetails={toggleDetails} />
             <div className="w-3/4 mx-auto pt-10">
                 <div className="grid grid-cols-2">
-                    <div className="font-semibold">
-                        <div className="grid grid-cols-4">
-                            <span>Episode:</span>
-                            <span className="col-span-3">{episode.mal_id}</span>
-                        </div>
-                        <div className="grid grid-cols-4">
-                            <span>Duration:</span>
-                            <span className="col-span-3">{Math.round(episode.duration / 60)} minutes</span>
-                        </div>
-                        <div className="grid grid-cols-4">
-                            <span>English Title:</span>
-                            <span className="col-span-3">{episode.title}</span>
-                        </div>
-                        <div className="grid grid-cols-4">
-                            <span>Japanese Title:</span>
-                            <span className="col-span-3">{episode.title_japanese}</span>
-                        </div>
-                        <div className="grid grid-cols-4">
-                            <span>Romanji Title:</span>
-                            <span className="col-span-3">{episode.title_romanji}</span>
-                        </div>
-                        <div className="grid grid-cols-4">
-                            <span>Aired:</span>
-                            <span className="col-span-3">{episode.aired}</span>
-                        </div>
-                        <div className="grid grid-cols-4">
-                            <span>MAL Reference:</span>
-                            <a className="col-span-3 pointer-events-auto" href={episode.url} target="blank">{episode.url.slice(0, 40)}...</a>
-                        </div>
+                    <div>
+                        <DetailItem label="Episode" value={episode.mal_id} />
+                        <DetailItem label="Duration" value={`${Math.round(episode.duration / 60)} minutes`} />
+                        <DetailItem label="English Title" value={episode.title} />
+                        <DetailItem label="Japanese Title" value={episode.title_japanese} />
+                        <DetailItem label="Romanji Title" value={episode.title_romanji} />
+                        <DetailItem label="Aired" value={episode.aired} />
+                        <DetailItem link label="MAL Reference" value={episode.url} />
                     </div>
+                    {/* episode thumbnail */}
                     <img src={episode.image} alt="episode image" className="justify-self-end self-center h-full" />
                 </div>
+                {/* episode synopsis */}
                 <p className="mt-32">{episode.synopsis}</p>
             </div>
         </div>
