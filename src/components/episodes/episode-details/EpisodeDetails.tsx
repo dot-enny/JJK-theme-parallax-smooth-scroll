@@ -38,7 +38,7 @@ export const EpisodeDetails = ({episode, toggleDetails}: EpisodeProps) => {
                         </div>
                         <div className="grid grid-cols-4">
                             <span>MAL Reference:</span>
-                            <a className="col-span-3" href={episode.url} target="blank" className="pointer-events-auto">{episode.url.slice(0, 40)}...</a>
+                            <a className="col-span-3 pointer-events-auto" href={episode.url} target="blank">{episode.url.slice(0, 40)}...</a>
                         </div>
                     </div>
                     <img src={episode.image} alt="episode image" className="justify-self-end self-center h-full" />
