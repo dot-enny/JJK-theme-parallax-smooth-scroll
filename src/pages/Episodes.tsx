@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Episode from "../components/episodes/Episode";
+import { motion } from "framer-motion";
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
@@ -37,16 +38,48 @@ export default function Episodes () {
         }
     };
 
+    const EpisodeGridVariants = {
+        initial: {
+            opacity: 0
+        },
+        animate: {
+            opacity: 1,
+            transition: {
+                duration: 0,
+                staggerChildren: 0.1
+            }
+        },
+    }
+
+    const EpisodeVariants = {
+        initial: {
+            opacity: 0,
+        },
+        animate: {
+            opacity: 1,
+            transition: {
+                duration: 0.8
+            }
+        }
+    }
+
     return (
-        <div className={`bg-black ${pointerEvents ? 'pointer-events-none' : 'pointer-events-auto'}`}>
+        <div className={`bg-black min-h-screen ${pointerEvents ? 'pointer-events-none' : 'pointer-events-auto'}`}>
             {animeData && (
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-20 pb-10 px-14 gap-20 bg-black min-h-screen">
+                <motion.div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-20 pb-10 px-14 gap-20"
+                    variants={EpisodeGridVariants}
+                    initial="initial"
+                    animate="animate"
+                >
                     {animeData.map((episode: any) => (
-                        <React.Fragment key={episode.mal_id}>
+                        <motion.div className="flex"
+                            key={episode.mal_id}
+                            variants={EpisodeVariants}
+                        >
                             <Episode episodeId={episode.mal_id} image={animeVideos[episode.mal_id]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} />
-                        </React.Fragment>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             )}
         </div>
     );
