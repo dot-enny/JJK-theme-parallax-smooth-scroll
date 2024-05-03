@@ -57,10 +57,10 @@ export default function Episode({ episodeId, image, setPointerEvents }: { episod
             </button>
 
             {/* episode details */}
-                    {episodeDetails && 
-                        <EpisodeDetails episode={{image, ...episodeData}} toggleDetails={toggleDetails} />}
-                </>
-            )}
+            <AnimatePresence>
+                {episodeDetails && episodeData &&
+                    <EpisodeDetails episode={{ image, ...episodeData }} toggleDetails={toggleDetails} />}
+            </AnimatePresence>
         </>
     );
 }
