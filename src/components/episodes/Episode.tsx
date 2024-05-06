@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion";
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
-export default function Episode({ episodeId, image, setPointerEvents }: { episodeId: number, image: string, setPointerEvents: () => void }) {
+export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: number }) {
     const [episodeData, setEpisodeData] = useState<any>(null);
     const [episodeDetails, setEpisodeDetails] = useState<boolean>(false);
 
@@ -19,7 +19,7 @@ export default function Episode({ episodeId, image, setPointerEvents }: { episod
 
     const fetchEpisodeData = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/anime/40748/episodes/${episodeId}`);
+            const response = await fetch(`${BASE_URL}/anime/${seasonId}/episodes/${episodeId}`);
             const data = await response.json();
             setEpisodeData(data.data);
             episodeId == 1 ? console.log(data) : null;
