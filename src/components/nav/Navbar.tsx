@@ -31,7 +31,7 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
           <ul className="flex gap-6 z-10 mix-blend-difference">
               <li><a href="/">Home</a></li>
               <li><a href="/episodes">Episodes</a></li>
-              <li><a href="#">Characters</a></li>
+              <li><a href="/characters">Characters</a></li>
               <li><a href="#">Watch</a></li>
           </ul>
       </nav>

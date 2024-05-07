@@ -5,10 +5,12 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Episodes from './pages/Episodes.tsx'
 import Layout from './components/Layout.tsx'
+import Characters from './pages/Characters.tsx'
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
   { path: '/episodes', element: <Episodes /> },
+  { path: '/characters', element: <Characters /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

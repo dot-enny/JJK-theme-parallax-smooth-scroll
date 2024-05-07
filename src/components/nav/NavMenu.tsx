@@ -7,7 +7,7 @@ export const NavMenu = () => {
   const navItems = [
     { title: "Home", path: "/" }, 
     { title: "Episodes", path: "/episodes" }, 
-    { title: "Characters", path: "#" }, 
+    { title: "Characters", path: "/characters" }, 
     { title: "Watch", path: "#" }
   ];
 
