@@ -1,31 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EpisodeDetails } from "./episode-details/EpisodeDetails"
 import { AnimatePresence } from "framer-motion";
+import { useFetchEpisode } from "../../hooks/useFetchEpisode";
 
-const BASE_URL = "https://api.jikan.moe/v4";
 
 export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: number }) {
-    const [episodeData, setEpisodeData] = useState<any>(null);
+    const episodeData = useFetchEpisode(seasonId, episodeId);
     const [episodeDetails, setEpisodeDetails] = useState<boolean>(false);
 
     const toggleDetails = () => {
         setEpisodeDetails(!episodeDetails);
         setPointerEvents();
-    };
-
-    useEffect(() => {
-        fetchEpisodeData();
-    }, []);
-
-    const fetchEpisodeData = async () => {
-        try {
-            const response = await fetch(`${BASE_URL}/anime/${seasonId}/episodes/${episodeId}`);
-            const data = await response.json();
-            setEpisodeData(data.data);
-            episodeId == 1 ? console.log(data) : null;
-        } catch (error) {
-            console.error("Error fetching anime data:", error);
-        }
     };
 
     return (
