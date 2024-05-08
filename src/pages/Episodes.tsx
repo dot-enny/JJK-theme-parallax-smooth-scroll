@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Episode from "../components/episodes/Episode";
 import { motion } from "framer-motion";
-import { Seasons } from "../components/episodes/Seasons";
+import { Seasons } from "../components/seasons/Seasons";
 import { useFetchAnimeData } from "../hooks/useFetchAnimeData";
 import { useFetchAnimeVideosEpisodes } from "../hooks/useFetchAnimeVideosEpisodes";
 
