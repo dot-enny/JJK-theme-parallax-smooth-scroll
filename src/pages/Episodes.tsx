@@ -52,19 +52,18 @@ export default function Episodes () {
                             initial="initial"
                             animate="animate"
                         >
-                            {animeData.map((episode: any) => (
+                            {animeData.map((episode: any, index: number) => (
                                 <motion.div className="flex"
-                                    key={episode.mal_id}
+                                    key={index}
                                     variants={EpisodeVariants}
                                 >
-                                    <Episode episodeId={episode.mal_id} image={animeEpisodeThumbNails[episode.mal_id]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} seasonId={seasonId} />
+                                    <Episode episodeId={episode.mal_id} image={animeEpisodeThumbNails && animeEpisodeThumbNails[episode.mal_id]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} seasonId={seasonId} />
                                 </motion.div>
                             ))}
                         </motion.div>
                     )}
                 </div>
-            )
-            }
+            )}
         </>
     );
 }
