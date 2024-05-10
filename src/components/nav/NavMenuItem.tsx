@@ -1,6 +1,6 @@
 import ArrowDownRight from "../../../public/icons/arrow-down-right.svg"
 import { motion } from "framer-motion";
-import { arrowMotion, dividerMotion, itemContentMotion, itemCoverMotion } from "../../utils/animations";
+import { arrowMotion, dividerMotion, itemContentMotion, itemCoverMotion } from "../../utils/animations/animations";
 import { useState } from "react";
 
 interface NavMenuItemProps {

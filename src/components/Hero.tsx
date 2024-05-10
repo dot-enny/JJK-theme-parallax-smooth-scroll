@@ -1,7 +1,7 @@
 import React from "react";
 import { HighlightItem } from "./HighlightItem"
 import { motion } from "framer-motion";
-import { easings } from "../utils/animations";
+import { DividerVariants, ParagraphVariants } from "../utils/animations/variants/Hero";
 
 export const Hero = () => {
 
@@ -11,26 +11,6 @@ export const Hero = () => {
         { title: "Genre", content: "Action" },
         { title: "Genre", content: "Thriller" }
     ];
-
-    const ParagraphVariants = {
-        initial: { opacity: 0 },
-        animate: {
-            opacity: 1,
-            transition: {
-                delay: 0.8,
-                duration: 0.8,
-                ease: easings.easeOutQuart,
-            },
-        }
-    };
-
-    const DividerVariants = {
-        initial: { scaleY: 0 },
-        animate: {
-            scaleY: 1,
-            transition: { duration: 0.8, ease: easings.easeInOutQuint, delay: 1 }
-        }
-    };
 
     return (
         <section className="h-screen relative flex flex-col justify-center">

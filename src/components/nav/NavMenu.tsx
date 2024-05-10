@@ -1,6 +1,6 @@
 import { NavMenuItem } from "./NavMenuItem";
 import { motion } from "framer-motion";  
-import { easings } from "../../utils/animations";
+import { easings } from "../../utils/animations/animations";
 
 export const NavMenu = () => {
 
