@@ -1,6 +1,6 @@
 import { DetailItem } from "./DetailItem";
 import { HideEpisodeDetails } from "./HideEpisodeDetails";
-import { AnimatePresence, animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface EpisodeProps {
     episode: any;
