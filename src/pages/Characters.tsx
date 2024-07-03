@@ -13,7 +13,7 @@ export default function Characters () {
                         {
                             characters.map((character: any, index: number) => (
                                 <div key={index}>
-                                    <Character character={character} />
+                                    <Character character={character} index={index} />
                                 </div>
                             ))
                         }

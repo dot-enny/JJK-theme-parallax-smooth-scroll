@@ -1,18 +1,25 @@
-import { motion, useInView } from "framer-motion";
+import { easeInOut, motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 interface CharacterProps {
     character: any;
+    index: number
 }
-const CharacterImgVariants = {
-    hidden: { scale: 0 },
+const CharacterImgVariants = (index: number) => ({
+    hidden: { 
+        scale: 0,
+        rotate: index % 2 == 0 ? 45 : -45
+    },
     visible: { 
         scale: 1,
+        rotate: 0,
         transition: {
-            duration: 0.5
+            duration: 0.6,
+            type: 'spring',
+            damping: 30,
         }
     }
-};
+});
 
 export const list = {
     visible: {
@@ -27,7 +34,7 @@ export const item = {
     visible: { x: 0, opacity: 1, transition: { duration: 1 } },
 };
 
-export default function Character({ character }: CharacterProps) {
+export default function Character({ character, index }: CharacterProps) {
 
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, {
@@ -35,12 +42,12 @@ export default function Character({ character }: CharacterProps) {
     });
       
     return (
-        <motion.div ref={sectionRef} className="h-[50vh] w-1/ my-20 flex justify-around shadow shadow-gray-800"
+        <motion.div ref={sectionRef} className="h-[55vh] my-20 flex justify-around shadow shadow-gray-800"
             variants={list}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
         >
-            <motion.div variants={CharacterImgVariants}>
+            <motion.div variants={CharacterImgVariants(index)}>
                 <img src={character.character.images.webp.image_url} alt={character.name} className="" />
             </motion.div>
             <motion.div 
