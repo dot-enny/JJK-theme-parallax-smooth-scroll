@@ -24,16 +24,12 @@ export const Hero = () => {
 
             {/* Text content */}
             <div className="flex flex-col items-center gap-24 max-xl:mt-10">
-                <div className="flex flex-col items-center gap-8">
-                    <div className="relative">
-                        <h1 className="text-6xl max-w-[12ch] text-center font-serif">Jujutsu Kaisen</h1>
-                    </div>
-                    <motion.p variants={ParagraphVariants} initial="initial" animate="animate">
+                <div className="flex flex-col items-center">
+                    <h1 className="text-6xl leading-[66px] tracking-[-1.2px] text-center font-serif mb-4">Jujutsu Kaisen</h1>
+                    <motion.p variants={ParagraphVariants} initial="initial" animate="animate" className="mb-8">
                         Defining the future of humans and curses
                     </motion.p>
-                    <button className="bg-white text-black uppercase px-6 py-2 rounded-md">
-                        Watch
-                    </button>
+                    <a href="/episodes" className="bg-white text-black uppercase px-6 py-2 rounded-md">Watch</a>
                 </div>
             </div>
             <div className="grid grid-cols-2 md:flex md:justify-between max-md:gap-y-10 sm:w-3/5 max-w-[900px] sm:mx-auto max-md:mt-10 max-sm:-mb-10 md:mt-20">
