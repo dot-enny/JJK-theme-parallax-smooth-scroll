@@ -15,7 +15,7 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
 
   useMotionValueEvent(scrollY, "change", (latest: number) => {
     const previous = scrollY.getPrevious() as unknown as number;
-    if (latest > previous && latest > 150 && !isMenuOpen) {)
+    if (latest > previous && latest > 150 && !isMenuOpen) {
       setHidden(true);
     } else {
       setHidden(false)
