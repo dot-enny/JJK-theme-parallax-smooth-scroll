@@ -15,10 +15,9 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
 
   useMotionValueEvent(scrollY, "change", (latest: number) => {
     const previous = scrollY.getPrevious() as unknown as number;
-    if (latest > previous && !isMenuOpen) {
+    if (latest > previous && latest > 150 && !isMenuOpen) {)
       setHidden(true);
-    };
-    if (latest < 20) {
+    } else {
       setHidden(false)
     };
   })
@@ -26,7 +25,15 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
   return (
     <>
     {/* large to extralarge screens */}
-      <nav className="max-lg:hidden absolute inset-x-0 top-0 h-16 flex justify-between items-center px-20 bg-gradient-to-b from-black to-black/0">
+      <motion.nav 
+        className="max-lg:hidden fixed z-10 inset-x-0 top-0 h-16 flex justify-between items-center px-20 bg-gradient-to-b from-black to-black/0"
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: "-100%" }
+        }}
+        animate={ hidden ? "hidden" : "visible" }
+        transition={{ duration: 0.3, type: 'ease' }}
+      >
           <span className="font-extrabold text-2xl mix-blend-difference">Jujutsu Kaisen</span>
           <ul className="flex gap-6 z-10 mix-blend-difference">
               <li><a href="/">Home</a></li>
@@ -34,7 +41,7 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
               <li><a href="/characters">Characters</a></li>
               <li><a href="#">Watch</a></li>
           </ul>
-      </nav>
+      </motion.nav>
       {/* small to medium screens */}
       <motion.div 
         className="lg:hidden w-full flex justify-between items-center p-4 md:p-8 fixed top-0 mix-blend-difference z-[100]"
