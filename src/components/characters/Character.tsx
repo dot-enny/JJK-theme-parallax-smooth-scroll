@@ -15,7 +15,7 @@ export default function Character({ character, index }: CharacterProps) {
     });
       
     return (
-        <motion.div ref={sectionRef} className="h-[55vh] my-20 flex justify-around shadow shadow-gray-800"
+        <motion.div ref={sectionRef} className="h-[55vh] my-20 flex justify-around"
             variants={list}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}

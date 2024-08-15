@@ -11,7 +11,7 @@ export const Seasons = ({ setSeasonId } : SeasonProps) => {
     const season2Data = useFetchSeason(51009);
 
     return (
-        <div className="bg-black h-screen p-20 grid grid-cols-2 gap-44">
+        <div className="grid lg:grid-cols-2 lg:h-screen mt-1">
             <SeasonCard seasonData={season1Data} setSeasonId={setSeasonId} />
             <SeasonCard seasonData={season2Data} setSeasonId={setSeasonId} />
         </div>

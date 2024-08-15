@@ -45,7 +45,7 @@ export default function Episodes () {
             {seasonId === 0 ? (
                 <Seasons setSeasonId={setSeasonId} />
             ) : (                
-                <div className={`bg-black min-h-screen ${pointerEvents ? 'pointer-events-none' : 'pointer-events-auto'}`}>
+                <div className={`min-h-screen ${pointerEvents ? 'pointer-events-none' : 'pointer-events-auto'}`}>
                     {animeData && (
                         <motion.div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-20 pb-10 px-14 gap-20"
                             variants={EpisodeGridVariants}

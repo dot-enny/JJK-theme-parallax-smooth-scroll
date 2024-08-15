@@ -6,7 +6,7 @@ export default function Characters () {
     const characters =  useFetchCharacters();
 
     return (
-        <div className="min-h-screen bg-black p-20">
+        <div className="min-h-screen p-20">
             {
                 characters && (
                     <>
