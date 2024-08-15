@@ -14,15 +14,19 @@ export const SeasonCard = ({ seasonData, setSeasonId }: SeasonCardProps) => {
     <>
       {
         seasonData ? (
-          <motion.button 
-            className="bg-gray-500 h-[60%] group" onClick={() => setSeasonId(seasonData.mal_id)}
-            variants={SeasonCardVariant} initial="initial" animate="animate"
+          <button className="flex flex-col overflow-hidden justify-center items-center w-fit cursor-pointer mx-auto max-md:px-4 max-md:h-screen"
+            onClick={() => setSeasonId(seasonData.mal_id)}
           >
-            <img src={seasonData.images.webp.large_image_url} alt="season 1 thumbnail" className="w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out" />
-            <h1 className="text-xl font-serif mt-10">Season {seasonNumber}</h1>
-          </motion.button>
+            <motion.div
+              className="h-100 w-100 bg-gray-600 overflow-hidden"
+              variants={SeasonCardVariant} initial="initial" animate="animate"
+            >
+              <img src={seasonData.images.webp.large_image_url} alt="season 1 thumbnail" className="aspect-square w-full hover:scale-105 transition-transform duration-500 ease-in-out cursor-grab" />
+            </motion.div>
+            <span className="font-semibold mt-6">Season {seasonNumber}</span>
+          </button>
         ) : (
-          <div className="bg-gray-500  bg-gradient-to-b from-slate-900 via-gray-700 to-slate-900 animate-pulse" />
+          <div className="bg-gray-500 bg-gradient-to-b from-slate-900 via-gray-700 to-slate-900 animate-pulse" />
         )
       }
     </>
