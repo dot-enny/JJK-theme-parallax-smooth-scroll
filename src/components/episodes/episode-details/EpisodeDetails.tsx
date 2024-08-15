@@ -44,13 +44,13 @@ export const EpisodeDetails = ({ episode, toggleDetails }: EpisodeProps) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="z-20 bg-gradient-to-b from-purple-950/95 via-pink-950 to-black/95 fixed inset-0 rounded pointer-events-none"
+            className="z-20 bg-gradient-to-b from-purple-950/95 via-pink-950 to-black/95 fixed inset-0 rounded pointer-events-none overflow-auto"
         >
             <motion.div variants={DetailVariants}>
                 <HideEpisodeDetails toggleDetails={toggleDetails} />
-                <div className="w-3/4 mx-auto pt-10">
-                    <div className="grid grid-cols-2">
-                        <div>
+                <div className="max-md:p-4 max-lg:p-8 lg:w-3/4 mx-auto pt-10">
+                    <div className="grid max-md:grid-flow lg:grid-cols-2">
+                        <div className="grid max-md:gap-y-1">
                             <DetailItem label="Episode" value={episode.mal_id} />
                             <DetailItem label="Duration" value={`${Math.round(episode.duration / 60)} minutes`} />
                             <DetailItem label="English Title" value={episode.title} />
@@ -60,10 +60,10 @@ export const EpisodeDetails = ({ episode, toggleDetails }: EpisodeProps) => {
                             <DetailItem link label="MAL Reference" value={episode.url} />
                         </div>
                         {/* episode thumbnail */}
-                        <img src={episode.image} alt="episode image" className="justify-self-end self-center h-full" />
+                        <img src={episode.image} alt="episode image" className="justify-self-end self-center h-full max-md:hidden" />
                     </div>
                     {/* episode synopsis */}
-                    <p className="mt-32">{episode.synopsis}</p>
+                    <p className="max-md:hidden mt-32">{episode.synopsis}</p>
                 </div>
             </motion.div>
         </motion.div>
