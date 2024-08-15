@@ -39,7 +39,6 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
               <li><a href="/">Home</a></li>
               <li><a href="/episodes">Episodes</a></li>
               <li><a href="/characters">Characters</a></li>
-              <li><a href="#">Watch</a></li>
           </ul>
       </motion.nav>
       {/* small to medium screens */}

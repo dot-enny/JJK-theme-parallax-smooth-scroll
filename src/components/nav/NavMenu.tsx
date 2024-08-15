@@ -8,7 +8,6 @@ export const NavMenu = () => {
     { title: "Home", path: "/" }, 
     { title: "Episodes", path: "/episodes" }, 
     { title: "Characters", path: "/characters" }, 
-    { title: "Watch", path: "#" }
   ];
 
   return (
