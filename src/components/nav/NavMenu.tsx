@@ -12,7 +12,7 @@ export const NavMenu = () => {
 
   return (
     <motion.nav
-        className="fixed w-screen h-screen bg-[#eee9e4] flex flex-col justify-end p-8 z-[50]"
+        className="fixed w-screen h-screen bg-[#eee9e4] flex flex-col justify-end p-8 z-10"
         initial={{ y: "-100%" }}
         animate={{
             y: 0,
