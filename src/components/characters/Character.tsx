@@ -29,7 +29,7 @@ export default function Character({ character, index }: CharacterProps) {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
             >
-                <motion.span variants={item} className="text-3xl font-light">{character.character.name}</motion.span>
+                <motion.span variants={item} className="text-3xl md:text-4xl font-light">{character.character.name}</motion.span>
                 <motion.span variants={item} className="font-semibold">{character.role}</motion.span>
             </motion.div>
         </motion.div>

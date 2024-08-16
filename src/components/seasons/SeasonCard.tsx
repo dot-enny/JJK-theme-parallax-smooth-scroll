@@ -23,7 +23,7 @@ export const SeasonCard = ({ seasonData, setSeasonId }: SeasonCardProps) => {
             >
               <img src={seasonData.images.webp.large_image_url} alt="season 1 thumbnail" className="aspect-square w-full hover:scale-105 transition-transform duration-500 ease-in-out cursor-grab" />
             </motion.div>
-            <span className="font-semibold mt-6">Season {seasonNumber}</span>
+            <span className="font-semibold font-serif text-xl mt-6">Season {seasonNumber}</span>
           </button>
         ) : (
           <div className="bg-gray-500 bg-gradient-to-b from-slate-900 via-gray-700 to-slate-900 animate-pulse" />
