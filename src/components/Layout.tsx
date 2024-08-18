@@ -24,7 +24,7 @@ export default function Layout ({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-}, [isMenuOpen])
+  }, [isMenuOpen])
 
   return (
     <div className=" text-white">
@@ -32,9 +32,8 @@ export default function Layout ({ children }: { children: React.ReactNode }) {
         <AnimatePresence>{isMenuOpen && <NavMenu />}</AnimatePresence>
         <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <main>
-            {children}
+          {children}
         </main>
     </div>
   )
 };
- 
