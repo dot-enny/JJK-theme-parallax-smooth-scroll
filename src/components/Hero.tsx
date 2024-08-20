@@ -29,7 +29,7 @@ export const Hero = () => {
                     <motion.p variants={ParagraphVariants} initial="initial" animate="animate" className="mb-8">
                         Defining the future of humans and curses
                     </motion.p>
-                    <a href="/episodes" className="bg-white text-black uppercase px-6 py-2 rounded-md">Watch</a>
+                    <a href="https://www.crunchyroll.com/series/GRDV0019R/jujutsu-kaisen" target="blank" className="bg-white text-black uppercase px-6 py-2 rounded-md">Watch</a>
                 </div>
             </div>
             <div className="grid grid-cols-2 md:flex md:justify-between max-md:gap-y-10 sm:w-3/5 max-w-[900px] sm:mx-auto max-md:mt-10 max-sm:-mb-10 md:mt-20">
