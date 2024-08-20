@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { useFetchEpisode } from "../../hooks/useFetchEpisode";
 
 
-export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: number }) {
+export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: number | null }) {
     const episodeData = useFetchEpisode(seasonId, episodeId);
     const [episodeDetails, setEpisodeDetails] = useState<boolean>(false);
 

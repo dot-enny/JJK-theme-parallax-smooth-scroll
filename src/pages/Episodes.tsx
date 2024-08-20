@@ -7,7 +7,7 @@ import { useFetchAnimeVideosEpisodes } from "../hooks/useFetchAnimeVideosEpisode
 
 export default function Episodes () {
     const [pointerEvents, setPointerEvents] = useState<boolean>(false);
-    const [seasonId, setSeasonId] = useState<number>(0);
+    const [seasonId, setSeasonId] = useState<number | null>(null);
     const animeData = useFetchAnimeData(seasonId);
     const animeEpisodeThumbNails = useFetchAnimeVideosEpisodes(seasonId);
 
@@ -42,7 +42,7 @@ export default function Episodes () {
 
     return (
         <>
-            {seasonId === 0 ? (
+            {seasonId === null ? (
                 <Seasons setSeasonId={setSeasonId} />
             ) : (                
                 <div className={`min-h-screen ${pointerEvents ? 'pointer-events-none' : 'pointer-events-auto'}`}>

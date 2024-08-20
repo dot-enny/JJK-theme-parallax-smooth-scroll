@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
-export function useFetchEpisode(seasonId: number, episodeId: number) {
+export function useFetchEpisode(seasonId: number | null, episodeId: number) {
     const [episodeData, setEpisodeData] =  useState<any>();
 
     useEffect(() => {
+        if (seasonId !== null)
         fetchEpisode();
     }, []);
 

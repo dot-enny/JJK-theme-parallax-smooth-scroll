@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 const BASE_URL = "https://api.jikan.moe/v4";
 
-export function useFetchAnimeData(seasonId: number) {
+export function useFetchAnimeData(seasonId: number | null) {
     const [animeData, setAnimeData] = useState<any>(null);
     
     useEffect(() => {
+        if (seasonId !== null)
         fetchAnimeData();
     }, [seasonId]);
 
