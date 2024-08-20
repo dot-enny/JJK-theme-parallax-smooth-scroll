@@ -1,7 +1,8 @@
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { NavMenuToggle } from "./NavMenuToggle"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useEpisodeDetail } from "../../context/EpisodeDetailContext";
 
 interface NavbarProps {
   isMenuOpen: boolean;
@@ -12,6 +13,7 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
 
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
+  const isEpisodeDetailOpen = useEpisodeDetail();
 
   useMotionValueEvent(scrollY, "change", (latest: number) => {
     const previous = scrollY.getPrevious() as unknown as number;
@@ -21,6 +23,10 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
       setHidden(false)
     };
   })
+
+  useEffect(() => {
+    isEpisodeDetailOpen ? setHidden(true) : setHidden(false);
+  }, [isEpisodeDetailOpen])
 
   return (
     <>
