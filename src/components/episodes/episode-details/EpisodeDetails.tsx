@@ -44,12 +44,13 @@ export const EpisodeDetails = ({ episode, toggleDetails }: EpisodeProps) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="z-20 bg-gradient-to-b from-purple-950/95 via-pink-950 to-black/95 fixed inset-0 rounded pointer-events-none overflow-auto"
+            className="z-20 bg-gradient-to-b from-purple-950/95 via-pink-950 to-black/95 fixed inset-0 rounded pointer-events-none"
+            data-lenis-prevent
         >
-            <motion.div variants={DetailVariants}>
+            <motion.div variants={DetailVariants} className="h-full">
                 <HideEpisodeDetails toggleDetails={toggleDetails} />
-                <div className="max-md:p-4 max-lg:p-8 lg:w-3/4 mx-auto pt-10">
-                    <div className="grid max-md:grid-flow lg:grid-cols-2">
+                <div className="max-md:p-4 max-lg:p-8 lg:w-3/4 mx-auto pt-10 h-full">
+                    <div className="grid lg:grid-cols-2">
                         <div className="grid max-md:gap-y-1">
                             <DetailItem label="Episode" value={episode.mal_id} />
                             <DetailItem label="Duration" value={`${Math.round(episode.duration / 60)} minutes`} />
@@ -63,7 +64,9 @@ export const EpisodeDetails = ({ episode, toggleDetails }: EpisodeProps) => {
                         <img src={episode.image} alt="episode image" className="justify-self-end self-center h-full max-md:hidden" />
                     </div>
                     {/* episode synopsis */}
-                    <p className="max-md:hidden mt-32">{episode.synopsis}</p>
+                    <div className="mt-8 md:mt-32 h-[60%] overflow-auto pointer-events-auto">
+                        <p>{episode.synopsis}</p>
+                    </div>
                 </div>
             </motion.div>
         </motion.div>
