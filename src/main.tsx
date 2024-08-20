@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Episodes from './pages/Episodes.tsx'
 import Layout from './components/Layout.tsx'
 import Characters from './pages/Characters.tsx'
+import { EpisodeDetailProvider } from './context/EpisodeDetailContext.tsx'
 
 const router = createBrowserRouter([
   { path: '/', element: <Home /> },
@@ -15,8 +16,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
+    <EpisodeDetailProvider>
+      <Layout>
+        <RouterProvider router={router} />
+      </Layout>
+    </EpisodeDetailProvider>
   </React.StrictMode>,
 )

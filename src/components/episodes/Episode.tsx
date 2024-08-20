@@ -1,24 +1,30 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { EpisodeDetails } from "./episode-details/EpisodeDetails"
 import { AnimatePresence } from "framer-motion";
 import { useFetchEpisode } from "../../hooks/useFetchEpisode";
+import { useEpisodeDetail, useEpisodeDetailUpdate } from "../../context/EpisodeDetailContext";
 
 
 export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: number | null }) {
     const episodeData = useFetchEpisode(seasonId, episodeId);
-    const [episodeDetails, setEpisodeDetails] = useState<boolean>(false);
+    const selectedEpisodeId = useEpisodeDetail();
+    const toggleDetails = useEpisodeDetailUpdate();
 
-    const toggleDetails = () => {
-        setEpisodeDetails(!episodeDetails);
+    const handleClick = () => {
+        toggleDetails(episodeId);
         setPointerEvents();
-    };
+    }
+
+    useEffect(() => {
+        document.body.style.overflow = selectedEpisodeId ? "hidden" : "auto";
+    }, [selectedEpisodeId])
 
     return (
         <>
             {/* episode card */}
             <button
                 className="m-auto hover:scale-105 transition-transform duration-300 ease-in-out"
-                onClick={toggleDetails}
+                onClick={handleClick}
             >
                 {episodeData ? (
                     <>
@@ -43,8 +49,8 @@ export default function Episode({ episodeId, image, setPointerEvents, seasonId }
 
             {/* episode details */}
             <AnimatePresence>
-                {episodeDetails && episodeData &&
-                    <EpisodeDetails episode={{ image, ...episodeData }} toggleDetails={toggleDetails} />}
+                {(selectedEpisodeId == episodeId) && episodeData &&
+                    <EpisodeDetails episode={{ image, ...episodeData }} toggleDetails={handleClick} />}
             </AnimatePresence>
         </>
     );

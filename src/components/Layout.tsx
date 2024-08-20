@@ -3,11 +3,13 @@ import Lenis from '@studio-freight/lenis'
 import { Navbar } from "./nav/Navbar"
 import { NavMenu } from "./nav/NavMenu";
 import { AnimatePresence } from "framer-motion";
+import { useEpisodeDetail } from "../context/EpisodeDetailContext";
 
 export default function Layout ({ children }: { children: React.ReactNode }) {
 
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isEpisodeDetailOpen = useEpisodeDetail();
 
   useEffect(() => {
     const lenis = new Lenis()
@@ -15,12 +17,12 @@ export default function Layout ({ children }: { children: React.ReactNode }) {
       lenis.raf(time)
       requestAnimationFrame(raf)
     };
-    requestAnimationFrame(raf)
+    requestAnimationFrame(raf);
 
-    isMenuOpen ? lenis.stop() : lenis.start()
+    (isMenuOpen || isEpisodeDetailOpen) ? lenis.stop() : lenis.start()
     
     return () => lenis.destroy();
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isEpisodeDetailOpen]);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
