@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { easings } from "../utils/animations";
+
 import Logo from "../../public/jjk-logo.svg";
 import { useState } from "react";
+import { easings } from "../utils/animations/animations";
 
 export const Preloader = () => {
 

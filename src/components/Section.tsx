@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react"
+import { item, list } from "../utils/animations/variants/Section";
 
 export const Section = (
   {image, tag, title, description}: 
@@ -12,18 +13,6 @@ export const Section = (
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"])
-
-  const list = {
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-  const item = {
-    hidden: { x: -10, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 1 } },
-  };
 
   const isInView = useInView(sectionRef, {
     margin: "-100px"

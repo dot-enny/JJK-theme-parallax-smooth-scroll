@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { HighlightItem } from "./HighlightItem"
-import { Navbar } from "./nav/Navbar"
+import { AnimatePresence, motion } from "framer-motion";
+import { DividerVariants, ParagraphVariants } from "../utils/animations/variants/Hero";
 import { NavMenu } from "./nav/NavMenu";
-import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
-import { easings } from "../utils/animations";
+import { Navbar } from "./nav/Navbar";
 
 export const Hero = () => {
 
@@ -16,26 +15,6 @@ export const Hero = () => {
     ];
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const ParagraphVariants = {
-        initial: { opacity: 0 },
-        animate: {
-            opacity: 1,
-            transition: {
-                delay: 1.8,
-                duration: 0.8,
-                ease: easings.easeOutQuart,
-            },
-        }
-    };
-
-    const DividerVariants = {
-        initial: { scaleY: 0 },
-        animate: {
-            scaleY: 1,
-            transition: { duration: 0.8, ease: easings.easeInOutQuint, delay: 2.2 }
-        }
-    };
 
     return (
         <section className="h-screen relative flex flex-col justify-center">
@@ -53,16 +32,12 @@ export const Hero = () => {
 
             {/* Text content */}
             <div className="flex flex-col items-center gap-24 max-xl:mt-10">
-                <div className="flex flex-col items-center gap-8">
-                    <div className="relative">
-                        <h1 className="text-6xl max-w-[12ch] text-center font-serif">Jujutsu Kaisen</h1>
-                    </div>
-                    <motion.p variants={ParagraphVariants} initial="initial" animate="animate">
+                <div className="flex flex-col items-center">
+                    <h1 className="text-6xl leading-[66px] tracking-[-1.2px] text-center font-serif mb-4">Jujutsu Kaisen</h1>
+                    <motion.p variants={ParagraphVariants} initial="initial" animate="animate" className="mb-8">
                         Defining the future of humans and curses
                     </motion.p>
-                    <button className="bg-white text-black uppercase px-6 py-2 rounded-md">
-                        Watch
-                    </button>
+                    <a href="https://www.crunchyroll.com/series/GRDV0019R/jujutsu-kaisen" target="blank" className="bg-white text-black uppercase px-6 py-2 rounded-md">Watch</a>
                 </div>
             </div>
             <div className="grid grid-cols-2 md:flex md:justify-between max-md:gap-y-10 sm:w-3/5 max-w-[900px] sm:mx-auto max-md:mt-10 max-sm:-mb-10 md:mt-20">

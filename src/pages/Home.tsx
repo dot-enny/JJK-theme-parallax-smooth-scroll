@@ -1,15 +1,15 @@
-import { Hero } from "./components/Hero";
-import { Section } from "./components/Section";
+import { Hero } from "../components/Hero";
+import { Section } from "../components/Section";
 import Gojo from "/img/jjk-gojo.jpg";
 import Megumi from "/img/jjk-megumi.jpg";
 import Yuji from "/img/jjk-yuji.jpg";
 import Nobara from "/img/jjk-nobara.jpg";
 import { useEffect, useState } from "react";
 import Lenis from '@studio-freight/lenis'
-import { Preloader } from "./components/Preloader";
+import { Preloader } from "../components/Preloader";
 import { AnimatePresence } from "framer-motion";
 
-export default function App () {
+export default function App() {
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,14 +31,14 @@ export default function App () {
   return (
     <>
       <AnimatePresence mode="wait">
-        { isLoading && <Preloader /> }
+        {isLoading && <Preloader />}
       </AnimatePresence>
-        
+
       <main className="min-h-screen text-white">
         <Hero />
-        <Section 
-          image={Gojo} 
-          tag="Gojo Satorou" 
+        <Section
+          image={Gojo}
+          tag="Gojo Satorou"
           title="The Strongest Jujutsu Sorcerer"
           description="Gojo Satorou is the strongest jujutsu sorcerer in the world. He is a teacher at Tokyo Metropolitan Curse Technical College and is known for his limitless cursed energy and Six Eyes technique."
         />
@@ -48,13 +48,13 @@ export default function App () {
           title="The Heir of the Zenin Clan"
           description="Fushiguro Megumi is a student at Tokyo Metropolitan Curse Technical College. He is a descendant of the Zenin clan and is known for his ability to summon Shikigami."
         />
-        <Section 
+        <Section
           image={Yuji}
           tag="Itadori Yuji"
           title="The Host of Sukuna"
           description="Itadori Yuji is a student at Tokyo Metropolitan Curse Technical College. He is the host of Ryomen Sukuna, the King of Curses, and is known for his immense physical strength."
         />
-        <Section 
+        <Section
           image={Nobara}
           tag="Kugisaki Nobara"
           title="The Exterminator"
@@ -64,4 +64,3 @@ export default function App () {
     </>
   )
 };
- 
