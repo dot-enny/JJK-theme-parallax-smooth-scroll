@@ -5,8 +5,8 @@ export const ParagraphVariants = {
     animate: {
         opacity: 1,
         transition: {
-            delay: 0.8,
-            duration: 0.8,
+            delay: 3,
+            duration: 1,
             ease: easings.easeOutQuart,
         },
     }
@@ -16,6 +16,6 @@ export const DividerVariants = {
     initial: { scaleY: 0 },
     animate: {
         scaleY: 1,
-        transition: { duration: 0.8, ease: easings.easeInOutQuint, delay: 1 }
+        transition: { duration: 1, ease: easings.easeInOutQuint, delay: 3.4 }
     }
 };
