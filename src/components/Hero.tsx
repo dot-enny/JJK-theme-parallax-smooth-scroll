@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { HighlightItem } from "./HighlightItem"
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { DividerVariants, ParagraphVariants } from "../utils/animations/variants/Hero";
-import { NavMenu } from "./nav/NavMenu";
-import { Navbar } from "./nav/Navbar";
 
 export const Hero = () => {
 
@@ -14,14 +12,8 @@ export const Hero = () => {
         { title: "Genre", content: "Thriller" }
     ];
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     return (
         <section className="h-screen relative flex flex-col justify-center">
-            {/* Navbar & NavMenu */}
-            <AnimatePresence>{isMenuOpen && <NavMenu />}</AnimatePresence>
-            <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-
             {/* Background Video */}
             <div className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-black/60 z-10" />
