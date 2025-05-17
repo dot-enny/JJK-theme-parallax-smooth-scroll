@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFetchAnimeData } from "../useFetchAnimeData";
 import { useFetchAnimeVideosEpisodes } from "../useFetchAnimeVideosEpisodes";
 
-export const useEpisodes = (initialSeasonId?: number) => {
+export const useEpisodes = (initialSeasonId?: number | null) => {
     const [pointerEvents, setPointerEvents] = useState<boolean>(false);
     const [seasonId, setSeasonId] = useState<number | null>(initialSeasonId ?? null);
     const { animeData } = useFetchAnimeData(seasonId);

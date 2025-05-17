@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 export default function Episodes() {
     const { seasonId } = useParams()
-    const parsedSeasonId = seasonId ? Number(seasonId) : undefined;
+    const parsedSeasonId = seasonId ? Number(seasonId) : null;
     const { pointerEvents, togglePointerEvents, animeData, animeEpisodeThumbNails } = useEpisodes(parsedSeasonId);
 
     return (
