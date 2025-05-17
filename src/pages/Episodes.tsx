@@ -23,7 +23,7 @@ export default function Episodes() {
                                 key={episode.mal_id}
                                 variants={EpisodeVariants}
                             >
-                                <Episode episodeId={episode.mal_id} image={animeEpisodeThumbNails && animeEpisodeThumbNails[episode.mal_id]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} seasonId={seasonId} />
+                                <Episode episodeId={episode.mal_id} image={animeEpisodeThumbNails && animeEpisodeThumbNails[episode.mal_id]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} seasonId={parsedSeasonId} />
                                 {/* {console.log(`Episode ID: ${episode.mal_id}, Image URL: ${animeEpisodeThumbNails && animeEpisodeThumbNails[episode.mal_id]?.images.jpg.image_url}`)} */}
                             </motion.div>
                         ))}
