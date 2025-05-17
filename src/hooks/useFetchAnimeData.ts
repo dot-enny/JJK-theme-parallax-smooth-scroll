@@ -1,24 +1,37 @@
 import { useEffect, useState } from "react";
+import { api } from "../api/api";
 
-const BASE_URL = "https://api.jikan.moe/v4";
-
-export function useFetchAnimeData(seasonId: number | null) {
+export function useFetchAnimeData(seasonId: number | null, page: number = 1, limit: number = 1) {
     const [animeData, setAnimeData] = useState<any>(null);
-    
-    useEffect(() => {
-        if (seasonId !== null)
-        fetchAnimeData();
-    }, [seasonId]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
-    const fetchAnimeData = async () => {
+    useEffect(() => {
+        let ignore = false;
+        
+        if (seasonId !== null) {
+            fetchAnimeData(ignore);
+        }
+        
+        return () => {
+            ignore = true;
+        };
+    }, [seasonId, page, limit]);
+
+    const fetchAnimeData = async (ignore: boolean) => {
+        setLoading(true);
+        setError(null);
         try {
-            const response = await fetch(`${BASE_URL}/anime/${seasonId}/episodes`);
-            const data = await response.json();
+            const data = await api.get<any>(`/anime/${seasonId}/episodes?page=${page}&limit=${limit}`);
+            if(ignore) return;
             setAnimeData(data.data);
         } catch (error) {
             console.error("Error fetching anime data:", error);
+            setError("Error fetching anime data");
+        } finally {
+            setLoading(false);
         }
     };
 
-    return animeData;
+    return { animeData, loading, error };
 };

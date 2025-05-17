@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
     background: #0a0a0a;
+    font-family: Nunito, sans-serif;
 }
 
 html.lenis,
@@ -25,4 +28,10 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
     pointer-events: none;
+}
+
+.js-loading *,
+.js-loading *::before,
+.js-loading *::after {
+    animation-play-state: paused !important;
 }

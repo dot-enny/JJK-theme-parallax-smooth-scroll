@@ -5,8 +5,8 @@ import { useFetchEpisode } from "../../hooks/useFetchEpisode";
 import { useEpisodeDetail, useEpisodeDetailUpdate } from "../../context/EpisodeDetailContext";
 
 
-export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: number | null }) {
-    const episodeData = useFetchEpisode(seasonId, episodeId);
+export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: string | null }) {
+    const episodeData = useFetchEpisode(Number(seasonId), episodeId);
     const selectedEpisodeId = useEpisodeDetail();
     const toggleDetails = useEpisodeDetailUpdate();
 
@@ -17,8 +17,11 @@ export default function Episode({ episodeId, image, setPointerEvents, seasonId }
 
     useEffect(() => {
         document.body.style.overflow = selectedEpisodeId ? "hidden" : "auto";
+        // if(episodeId === selectedEpisodeId) {
+        //     console.log(image);
+        // }
     }, [selectedEpisodeId])
-
+    // console.log(image);
     return (
         <>
             {/* episode card */}
@@ -28,7 +31,11 @@ export default function Episode({ episodeId, image, setPointerEvents, seasonId }
             >
                 {episodeData ? (
                     <>
-                        {episodeData.mal_id && <img src={image} alt="episode image" className="w-[200px] h-[113px]" />}
+                        <img
+                            src={image} // Fallback image
+                            alt="episode image"
+                            className="w-[200px] h-[113px]"
+                        />
                         <div className="flex justify-start text-lg font-semibold cursor-pointer mt-5">
                             <span>{episodeData.mal_id}</span>
                             <span className="mr-2">.</span>
