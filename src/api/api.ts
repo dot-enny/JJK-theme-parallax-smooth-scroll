@@ -3,7 +3,7 @@ const BASE_URL = "https://api.jikan.moe/v4";
 let requestQueue: (() => void)[] = [];
 let activeRequests = 0;
 const MAX_REQUESTS_PER_SECOND = 3;
-const MAX_REQUESTS_PER_MINUTE = 60;
+// const MAX_REQUESTS_PER_MINUTE = 60;
 
 function processQueue() {
     if (requestQueue.length > 0 && activeRequests < MAX_REQUESTS_PER_SECOND) {
