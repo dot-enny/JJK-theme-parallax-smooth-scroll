@@ -32,7 +32,7 @@ export default function Episode({ episodeId, image, setPointerEvents, seasonId }
                 {episodeData ? (
                     <>
                         <img
-                            src={image} // Fallback image
+                            src={image}
                             alt="episode image"
                             className="w-[200px] h-[113px]"
                         />

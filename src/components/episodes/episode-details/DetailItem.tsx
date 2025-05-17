@@ -11,8 +11,8 @@ export const DetailItem = ({ label, value, link }: DetailItemProps) => {
             { link ?
                 ( 
                     <>
-                        <a className="col-span-3 pointer-events-auto max-md:hidden" href={value} target="blank">{value.slice(0, 40)}...</a>
-                        <a className="col-span-3 pointer-events-auto md:hidden" href={value} target="blank">{value.slice(0, 20)}...</a>
+                        <a className="col-span-3 pointer-events-auto max-md:hidden underline line-clamp-1" href={value} target="blank">{value.slice(0, 40)}...</a>
+                        <a className="col-span-3 pointer-events-auto md:hidden underline line-clamp-1" href={value} target="blank">{value.slice(0, 20)}...</a>
                     </>
                 ) : (
                     <span className="col-span-3">{value}</span>
