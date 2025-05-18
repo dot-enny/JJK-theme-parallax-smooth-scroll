@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useFetchAnimeData } from "../useFetchAnimeData";
 import { useFetchAnimeVideosEpisodes } from "../useFetchAnimeVideosEpisodes";
+import { useParams } from "react-router-dom";
 
-export const useEpisodes = (initialSeasonId?: string | null) => {
+export const useEpisodes = () => {
+    const { seasonId } = useParams()
+
     const [pointerEvents, setPointerEvents] = useState<boolean>(false);
-    const [seasonId, setSeasonId] = useState<string | null>(initialSeasonId ?? null);
     const { animeData } = useFetchAnimeData(Number(seasonId));
     const animeEpisodeThumbNails = useFetchAnimeVideosEpisodes(Number(seasonId));
 
@@ -15,7 +17,6 @@ export const useEpisodes = (initialSeasonId?: string | null) => {
     return {
         pointerEvents,
         seasonId,
-        setSeasonId,
         togglePointerEvents,
         animeData,
         animeEpisodeThumbNails

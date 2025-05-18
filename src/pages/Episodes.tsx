@@ -2,12 +2,9 @@ import Episode from "../components/episodes/Episode";
 import { motion } from "framer-motion";
 import { EpisodeGridVariants, EpisodeVariants } from "../utils/animations/variants/Episodes";
 import { useEpisodes } from "../hooks/episodes/useEpisodes";
-import { useParams } from "react-router-dom";
 
 export default function Episodes() {
-    const { seasonId } = useParams()
-    const parsedSeasonId = seasonId ? seasonId : null;
-    const { pointerEvents, togglePointerEvents, animeData, animeEpisodeThumbNails } = useEpisodes(parsedSeasonId);
+    const { pointerEvents, togglePointerEvents, animeData, animeEpisodeThumbNails, seasonId } = useEpisodes();
 
     return (
         <>
@@ -25,7 +22,7 @@ export default function Episodes() {
                                 key={episode.mal_id}
                                 variants={EpisodeVariants}
                             >
-                                <Episode episodeId={episode.mal_id} image={animeEpisodeThumbNails[index]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} seasonId={parsedSeasonId} />
+                                <Episode episodeId={episode.mal_id} image={animeEpisodeThumbNails[index]?.images.jpg.image_url} setPointerEvents={togglePointerEvents} seasonId={seasonId} />
                             </motion.div>
                         ))}
                     </motion.div>
