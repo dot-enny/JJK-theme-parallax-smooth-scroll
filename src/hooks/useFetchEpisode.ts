@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
+import { api } from "../api/api";
 
-const BASE_URL = "https://api.jikan.moe/v4";
+// Define the type for the episode data
+interface EpisodeData {
+    mal_id: number;
+    title: string;
+    aired: { from: string };
+    filler: boolean;
+    recap: boolean;
+    [key: string]: any; // Add additional fields as needed
+}
 
 export function useFetchEpisode(seasonId: number | null, episodeId: number) {
-    const [episodeData, setEpisodeData] =  useState<any>();
+    const [episodeData, setEpisodeData] = useState<EpisodeData | undefined>();
 
     useEffect(() => {
-        if (seasonId !== null)
-        fetchEpisode();
-    }, []);
+        if (seasonId !== null) fetchEpisode();
+    }, [seasonId, episodeId]);
 
     const fetchEpisode = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/anime/${seasonId}/episodes/${episodeId}`);
-            const data = await response.json();
+            const data = await api.get<{ data: EpisodeData }>(`/anime/${seasonId}/episodes/${episodeId}`);
             setEpisodeData(data.data);
         } catch (error) {
             console.error("Error fetching anime data:", error);
         }
     };
+
     return episodeData;
-};
+}

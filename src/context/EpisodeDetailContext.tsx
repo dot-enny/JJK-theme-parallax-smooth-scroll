@@ -16,7 +16,6 @@ export const EpisodeDetailProvider = ({ children }: { children: React.ReactNode 
 
     const toggleDetails = (episodeId: string) => {
         setSelectedEpisodeId(prevId => (prevId === episodeId ? 0 : episodeId));
-        console.log(episodeId)
     }
 
     return (

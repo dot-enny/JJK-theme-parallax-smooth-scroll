@@ -47,6 +47,7 @@ export const Navbar = ({isMenuOpen, setIsMenuOpen}: NavbarProps) => {
               <li><a href="/characters">Characters</a></li>
           </ul>
       </motion.nav>
+      
       {/* small to medium screens */}
       <motion.div 
         className="lg:hidden w-full flex justify-between items-center p-4 md:p-8 fixed top-0 mix-blend-difference z-10"

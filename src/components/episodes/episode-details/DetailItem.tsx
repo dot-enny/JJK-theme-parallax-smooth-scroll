@@ -7,7 +7,7 @@ interface DetailItemProps {
 export const DetailItem = ({ label, value, link }: DetailItemProps) => {
     return (
         <div className="flex flex-wrap max-lg:gap-x-4 lg:grid grid-cols-4">
-            <span className="max-lg:text-nowrap">{label}:</span>
+            <span className="max-lg:text-nowrap line-clamp-1">{label}:</span>
             { link ?
                 ( 
                     <>
@@ -15,7 +15,7 @@ export const DetailItem = ({ label, value, link }: DetailItemProps) => {
                         <a className="col-span-3 pointer-events-auto md:hidden underline line-clamp-1" href={value} target="blank">{value.slice(0, 20)}...</a>
                     </>
                 ) : (
-                    <span className="col-span-3">{value}</span>
+                    <span className="col-span-3 line-clamp-1">{value}</span>
                 )
             }
         </div>

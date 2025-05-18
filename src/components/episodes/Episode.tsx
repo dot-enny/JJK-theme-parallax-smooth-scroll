@@ -5,7 +5,7 @@ import { useFetchEpisode } from "../../hooks/useFetchEpisode";
 import { useEpisodeDetail, useEpisodeDetailUpdate } from "../../context/EpisodeDetailContext";
 
 
-export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: string | null }) {
+export default function Episode({ episodeId, image, setPointerEvents, seasonId }: { episodeId: number, image: string, setPointerEvents: () => void, seasonId: string | undefined }) {
     const episodeData = useFetchEpisode(Number(seasonId), episodeId);
     const selectedEpisodeId = useEpisodeDetail();
     const toggleDetails = useEpisodeDetailUpdate();
