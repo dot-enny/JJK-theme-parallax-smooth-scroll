@@ -3,15 +3,14 @@ import { HighlightItem } from "./HighlightItem"
 import { motion } from "framer-motion";
 import { DividerVariants, ParagraphVariants } from "../utils/animations/variants/Hero";
 
-export const Hero = () => {
+const animeInfo = [
+    { title: "Season 1", content: "24 Episodes" },
+    { title: "Season 2", content: "24 Episodes" },
+    { title: "Genre", content: "Action" },
+    { title: "Genre", content: "Thriller" }
+];
 
-    const animeInfo = [
-        { title: "Season 1", content: "24 Episodes" },
-        { title: "Season 2", content: "24 Episodes" },
-        { title: "Genre", content: "Action" },
-        { title: "Genre", content: "Thriller" }
-    ];
-
+export const Hero = () => {    
     return (
         <section className="h-screen relative flex flex-col justify-center">
             {/* Background Video */}
