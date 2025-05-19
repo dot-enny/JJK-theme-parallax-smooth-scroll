@@ -2,22 +2,26 @@ import React from "react";
 import { HighlightItem } from "./HighlightItem"
 import { motion } from "framer-motion";
 import { DividerVariants, ParagraphVariants } from "../utils/animations/variants/Hero";
+import { useDelayVideoPlayback } from "../hooks/episodes/useDelayVideoPlayback";
 
-export const Hero = () => {
+const animeInfo = [
+    { title: "Season 1", content: "24 Episodes" },
+    { title: "Season 2", content: "24 Episodes" },
+    { title: "Genre", content: "Action" },
+    { title: "Genre", content: "Thriller" }
+];
 
-    const animeInfo = [
-        { title: "Season 1", content: "24 Episodes" },
-        { title: "Season 2", content: "24 Episodes" },
-        { title: "Genre", content: "Action" },
-        { title: "Genre", content: "Thriller" }
-    ];
+export const Hero = () => {    
+
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+    useDelayVideoPlayback(videoRef);
 
     return (
         <section className="h-screen relative flex flex-col justify-center">
             {/* Background Video */}
             <div className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-black/60 z-10" />
-                <video autoPlay muted loop className="w-full h-full object-cover">
+                <video ref={videoRef} autoPlay muted loop className="w-full h-full object-cover">
                     <source src="/JJK S2E1 - Trim.mp4" type="video/mp4" />
                 </video>
             </div>
