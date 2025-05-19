@@ -7,7 +7,7 @@ import { easings } from "../utils/animations/animations";
 export const Preloader = () => {
 
   const PreloaderVariants = {
-    exit: { y: "-100%", transition: { duration: 1.5, delay: 0.2, ease: easings.easeOutQuart } }
+    exit: { y: "-100%", transition: { duration: 1.5, delay: 0.5, ease: easings.easeOutQuart } }
   };
 
   const logoVariants = {
@@ -17,14 +17,14 @@ export const Preloader = () => {
       scale: 0.5,
       transition: { duration: 2, ease: easings.easeInOutQuint }
     },
-    exit: { opacity: 0, transition: { duration: 0.2, ease: easings.easeInOutQuint } }
+    exit: { opacity: 0, scale: 0, transition: { duration: 0.5, ease: 'easeOut' } }
   };
 
   const [isLogoVisible, setIsLogoVisible] = useState(true);
 
   return (
     <motion.div className="fixed inset-0 z-50 bg-white flex justify-center items-center" variants={PreloaderVariants} exit="exit">
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {
           isLogoVisible &&
           <motion.img src={Logo} alt="JUJTSU KAISEN" variants={logoVariants} initial="initial" animate="animate" exit="exit"  onAnimationComplete={() => setIsLogoVisible(false)} />
