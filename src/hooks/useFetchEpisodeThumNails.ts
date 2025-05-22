@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
+import { api } from "../api/api";
 
-const BASE_URL = "https://api.jikan.moe/v4";
-
-export function useFetchAnimeVideosEpisodes(seasonId: number | null) {
+export function useFetchEpisodeThumbNails(seasonId: number | null) {
     const [animeVideos, setAnimeVideos] = useState<any>(null);
 
     useEffect(() => {
         if (seasonId !== null)
-        fetchAnimeVideosEpisodes();
+        fetchEpisodeThumbNails();
     }, [seasonId]);
 
-    const fetchAnimeVideosEpisodes = async () => {
+    const fetchEpisodeThumbNails = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/anime/${seasonId}/videos/episodes`);
-            const data = await response.json();
+            const data = await api.get<{ data: any }>(`/anime/${seasonId}/videos/episodes`);
             setAnimeVideos(data.data);
         } catch (error) {
             console.error("Error fetching anime data:", error);
