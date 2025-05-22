@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-const BASE_URL = "https://api.jikan.moe/v4";
+import { api } from "../api/api";
 
 export function useFetchCharacters() {
     const [characters, setCharacters] =  useState<any>();
@@ -11,9 +10,8 @@ export function useFetchCharacters() {
 
     const fetchCharacters = async () => {
         try {
-            const response = await fetch(`${BASE_URL}/anime/40748/characters`);
-            const data = await response.json();
-            setCharacters(data.data);
+            const data = await api.get<{ data: any }>(`/anime/40748/characters`);
+            setCharacters(data);
         } catch (error) {
             console.error("Error fetching anime data:", error);
         }
