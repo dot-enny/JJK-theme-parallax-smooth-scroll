@@ -28,7 +28,9 @@ export const SeasonCard = ({ seasonData }: SeasonCardProps) => {
             </button>
           </div>
         ) : (
-          <div className="bg-gray-500 bg-gradient-to-b from-slate-900 via-gray-700 to-slate-900 animate-pulse" />
+          <div className="h-screen flex items-center">
+            <div className="bg-gray-500 bg-gradient-to-b from-slate-900 via-gray-700 to-slate-900 animate-pulse size-[288px] sm:size-[432px] m-auto" />
+          </div>
         )
       }
     </>
